@@ -26,7 +26,7 @@ export default function Home() {
         </div>
 
         {/* Header */}
-        <header className="mb-16">
+        <header className="mb-10">
           <Image
             src="/pic.jpg"
             alt="Pasha Barbashin"
@@ -72,12 +72,13 @@ export default function Home() {
               fill
               className="object-cover scale-105 transition-transform duration-300 group-hover:scale-[1.08]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
             <div className="absolute bottom-3 left-4">
               <h3 className="text-white font-semibold text-lg flex items-center gap-2">
                 <Github className="h-5 w-5" />
                 GitHub
               </h3>
+              <p className="text-white/70 text-sm">Started coding in July – 3 projects launched</p>
             </div>
           </Link>
 
@@ -94,12 +95,13 @@ export default function Home() {
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               <div className="absolute bottom-3 left-3 right-3">
                 <h3 className="text-white font-semibold text-lg flex items-center gap-2">
                   <Activity className="h-5 w-5" />
                   WHOOP
                 </h3>
+                <p className="text-white/70 text-sm">~130 workouts in 2025</p>
               </div>
             </Link>
 
@@ -115,12 +117,13 @@ export default function Home() {
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               <div className="absolute bottom-3 left-3 right-3">
                 <h3 className="text-white font-semibold text-lg flex items-center gap-2">
                   <Music className="h-5 w-5" />
                   Spotify
                 </h3>
+                <p className="text-white/70 text-sm">Top 1% Sleep Token fan</p>
               </div>
             </Link>
 
@@ -138,12 +141,13 @@ export default function Home() {
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <h3 className="text-white font-semibold text-lg flex items-center gap-2">
                     <Twitter className="h-5 w-5" />
                     X / Twitter
                   </h3>
+                  <p className="text-white/70 text-sm">0 → 45 followers in 6 months</p>
                 </div>
               </Link>
 
@@ -159,12 +163,13 @@ export default function Home() {
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <h3 className="text-white font-semibold text-lg flex items-center gap-2">
                     <Linkedin className="h-5 w-5" />
                     LinkedIn
                   </h3>
+                  <p className="text-white/70 text-sm">20k impressions since October</p>
                 </div>
               </Link>
             </div>
