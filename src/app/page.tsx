@@ -193,12 +193,12 @@ export default function Home() {
             </Link>
           </BentoCard>
 
-          {/* Substack Performance */}
+          {/* LinkedIn Performance */}
           <BentoCard colSpan={2} interactive>
-            <Link href="https://t.me/bassotov_blog" target="_blank" className="block">
+            <Link href="https://www.linkedin.com/in/bassotov/" target="_blank" className="block">
               <Image
-                src="/socials/substack-performance.png"
-                alt="Substack Performance"
+                src="/socials/linkedin-performance.png"
+                alt="LinkedIn Performance"
                 width={400}
                 height={200}
                 className="w-full rounded-lg"
