@@ -3,8 +3,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bento Grid",
-  description: "A responsive bento grid layout with embeddable widgets",
+  title: "Pasha Barbashin",
+  description: "A personal page",
 };
 
 export default function RootLayout({

@@ -1,11 +1,9 @@
-import { BentoGrid, BentoCard } from "@/components/bento";
 import { SpotifyEmbed, GitHubEmbed } from "@/components/embeds";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import Image from "next/image";
 import Link from "next/link";
 import {
   Music,
-  Code,
   MapPin,
   Briefcase,
   ExternalLink,
@@ -14,220 +12,296 @@ import {
   Send,
   Linkedin,
   Twitter,
-  Camera,
-  Heart,
-  Wand2,
+  Mail,
+  Activity,
 } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
-      <main className="mx-auto max-w-3xl px-4 py-8 md:py-16">
+      <main className="mx-auto max-w-5xl px-4 py-8 md:py-16">
         {/* Top bar with theme switcher */}
         <div className="mb-8 flex justify-end">
           <ThemeSwitcher />
         </div>
 
         {/* Header */}
-        <header className="mb-8 md:mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
+        <header className="mb-16">
+          <Image
+            src="/pic.jpg"
+            alt="Pasha Barbashin"
+            width={80}
+            height={80}
+            className="rounded-full mb-4"
+          />
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
             Pasha Barbashin
           </h1>
-          <div className="flex flex-wrap items-center gap-4 text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <MapPin className="h-4 w-4" />
               London, UK
             </span>
             <span className="flex items-center gap-1.5">
               <Briefcase className="h-4 w-4" />
-              Digital Products @ BCG X
+              BCG X
             </span>
+            <Link
+              href="mailto:pasha@barbash.in"
+              className="flex items-center gap-1.5 hover:text-primary transition-colors"
+            >
+              <Mail className="h-4 w-4" />
+              pasha@barbash.in
+            </Link>
           </div>
         </header>
 
-        {/* Bento Grid */}
-        <BentoGrid columns={4} gap={4}>
-          {/* Social Links Card */}
-          <BentoCard colSpan={2}>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-semibold text-lg mb-1">Connect</h3>
-              <div className="grid grid-cols-2 gap-2">
-                <Link
-                  href="https://www.linkedin.com/in/bassotov/"
-                  target="_blank"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
-                </Link>
-                <Link
-                  href="https://x.com/pasha_barbashin"
-                  target="_blank"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Twitter className="h-4 w-4" />
-                  X / Twitter
-                </Link>
-                <Link
-                  href="https://www.youtube.com/@pashalika"
-                  target="_blank"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Youtube className="h-4 w-4" />
-                  YouTube
-                </Link>
-                <Link
-                  href="https://t.me/bassotov_blog"
-                  target="_blank"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Send className="h-4 w-4" />
-                  Telegram
-                </Link>
-                <Link
-                  href="https://github.com/bassotov"
-                  target="_blank"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Github className="h-4 w-4" />
-                  GitHub
-                </Link>
-                <Link
-                  href="https://open.spotify.com/artist/1mkiGsuSOF25ft6cRMEktM"
-                  target="_blank"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Music className="h-4 w-4" />
-                  Spotify
-                </Link>
-              </div>
-            </div>
-          </BentoCard>
+        {/* 2025 Wrapped Section */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-semibold mb-4">🎉 2025 Wrapped</h2>
 
-          {/* Projects Section */}
-          <BentoCard colSpan={2}>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-semibold text-lg mb-1">Projects</h3>
-              <div className="flex flex-col gap-2">
-                <Link
-                  href="https://chromewebstore.google.com/detail/twitter-screenshot/ggddbhbgmlkapnmphojkeoeefdcglfna"
-                  target="_blank"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-                >
-                  <Camera className="h-4 w-4" />
-                  Twitter Screenshot
-                  <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </Link>
-                <Link
-                  href="https://soka.health"
-                  target="_blank"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-                >
-                  <Heart className="h-4 w-4" />
-                  Sōka
-                  <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </Link>
-                <span className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Wand2 className="h-4 w-4" />
-                  X-Wizard (BCG X)
-                </span>
-              </div>
+          {/* GitHub Contributions - Full width */}
+          <Link
+            href="https://github.com/bassotov"
+            target="_blank"
+            className="group relative block w-full aspect-[3.4/1] overflow-hidden rounded-xl mb-4"
+          >
+            <Image
+              src="/Github.png"
+              alt="GitHub 2025 Contributions"
+              fill
+              className="object-cover scale-105 transition-transform duration-300 group-hover:scale-[1.08]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            <div className="absolute bottom-3 left-4">
+              <h3 className="text-white font-semibold text-lg flex items-center gap-2">
+                <Github className="h-5 w-5" />
+                GitHub
+              </h3>
             </div>
-          </BentoCard>
+          </Link>
 
-          {/* WHOOP Stats - Vertical phone screenshot */}
-          <BentoCard colSpan={1} rowSpan={3} interactive className="p-0 overflow-hidden">
-            <Link href="#" className="block relative w-full h-full">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* WHOOP - Vertical */}
+            <Link
+              href="https://join.whoop.com/6940A345"
+              target="_blank"
+              className="group relative aspect-[9/16] overflow-hidden rounded-xl"
+            >
               <Image
-                src="/socials/whoop-2025.png"
-                alt="WHOOP 2025 Year in Review"
+                src="/whoop-wrapped.PNG"
+                alt="WHOOP 2025 Wrapped"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3">
+                <h3 className="text-white font-semibold text-lg flex items-center gap-2">
+                  <Activity className="h-5 w-5" />
+                  WHOOP
+                </h3>
+              </div>
             </Link>
-          </BentoCard>
 
-          {/* Spotify Wrapped - Vertical phone screenshot */}
-          <BentoCard colSpan={1} rowSpan={3} interactive className="p-0 overflow-hidden">
+            {/* Spotify - Vertical */}
             <Link
               href="https://open.spotify.com/artist/1mkiGsuSOF25ft6cRMEktM"
               target="_blank"
-              className="block relative w-full h-full"
+              className="group relative aspect-[9/16] overflow-hidden rounded-xl"
             >
               <Image
-                src="/socials/spotify-wrapped.png"
-                alt="Spotify Wrapped 2025"
+                src="/spotify-wrapped.JPG"
+                alt="Spotify 2025 Wrapped"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3">
+                <h3 className="text-white font-semibold text-lg flex items-center gap-2">
+                  <Music className="h-5 w-5" />
+                  Spotify
+                </h3>
+              </div>
             </Link>
-          </BentoCard>
 
-          {/* X Analytics - Tall dashboard */}
-          <BentoCard colSpan={2} rowSpan={2} interactive className="p-0 overflow-hidden">
+            {/* Horizontal cards container - matches height of vertical cards */}
+            <div className="col-span-2 row-span-1 md:row-span-1 flex flex-col gap-4 aspect-square md:aspect-auto md:h-full">
+              {/* Twitter/X - Horizontal */}
+              <Link
+                href="https://x.com/pasha_barbashin"
+                target="_blank"
+                className="group relative flex-1 overflow-hidden rounded-xl"
+              >
+                <Image
+                  src="/Twitter-wrapped.png"
+                  alt="X 2025 Wrapped"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <h3 className="text-white font-semibold text-lg flex items-center gap-2">
+                    <Twitter className="h-5 w-5" />
+                    X / Twitter
+                  </h3>
+                </div>
+              </Link>
+
+              {/* LinkedIn - Horizontal */}
+              <Link
+                href="https://www.linkedin.com/in/bassotov/"
+                target="_blank"
+                className="group relative flex-1 overflow-hidden rounded-xl"
+              >
+                <Image
+                  src="/LinkedIn-wrapped.png"
+                  alt="LinkedIn 2025 Wrapped"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <h3 className="text-white font-semibold text-lg flex items-center gap-2">
+                    <Linkedin className="h-5 w-5" />
+                    LinkedIn
+                  </h3>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">🚀 Projects</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {/* Twitter Screenshot - Vertical */}
+            <Link
+              href="https://chromewebstore.google.com/detail/twitter-screenshot/ggddbhbgmlkapnmphojkeoeefdcglfna"
+              target="_blank"
+              className="group relative aspect-[9/16] md:aspect-[4/5] overflow-hidden rounded-xl"
+            >
+              <Image
+                src="/Twitter Screenshot.png"
+                alt="Twitter Screenshot"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 className="text-white font-semibold text-lg flex items-center gap-2">
+                  Twitter Screenshot
+                  <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </h3>
+                <p className="text-white/70 text-sm">Chrome Extension</p>
+              </div>
+            </Link>
+
+            {/* Sōka - Vertical */}
+            <Link
+              href="https://soka.health"
+              target="_blank"
+              className="group relative aspect-[9/16] md:aspect-[4/5] overflow-hidden rounded-xl"
+            >
+              <Image
+                src="/Sōka.png"
+                alt="Sōka"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 className="text-white font-semibold text-lg flex items-center gap-2">
+                  Sōka
+                  <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </h3>
+                <p className="text-white/70 text-sm">Health Platform</p>
+              </div>
+            </Link>
+
+            {/* X-Wizard - Horizontal on mobile, vertical on desktop */}
+            <Link
+              href="https://www.linkedin.com/feed/update/urn:li:activity:7404105038173741056/"
+              target="_blank"
+              className="group relative col-span-2 md:col-span-1 aspect-[21/9] md:aspect-[4/5] overflow-hidden rounded-xl"
+            >
+              <Image
+                src="/X-Wizard.PNG"
+                alt="X-Wizard"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 className="text-white font-semibold text-lg flex items-center gap-2">
+                  X-Wizard
+                  <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </h3>
+                <p className="text-white/70 text-sm">BCG X Internal Tool</p>
+              </div>
+            </Link>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer with Socials */}
+      <footer className="border-t border-border bg-card/50">
+        <div className="mx-auto max-w-5xl px-4 py-8">
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <Link
+              href="https://www.linkedin.com/in/bassotov/"
+              target="_blank"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </Link>
             <Link
               href="https://x.com/pasha_barbashin"
               target="_blank"
-              className="block relative w-full h-full"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="X / Twitter"
             >
-              <Image
-                src="/socials/x-analytics.png"
-                alt="X Analytics"
-                fill
-                className="object-cover"
-              />
+              <Twitter className="h-5 w-5" />
             </Link>
-          </BentoCard>
-
-          {/* GitHub Contributions - Wide horizontal banner */}
-          <BentoCard colSpan={4} interactive className="p-0 overflow-hidden">
-            <Link href="https://github.com/bassotov" target="_blank" className="block">
-              <Image
-                src="/socials/github-contributions.png"
-                alt="GitHub Contributions"
-                width={800}
-                height={150}
-                className="w-full h-auto"
-              />
+            <Link
+              href="https://www.youtube.com/@pashalika"
+              target="_blank"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="YouTube"
+            >
+              <Youtube className="h-5 w-5" />
             </Link>
-          </BentoCard>
-
-          {/* LinkedIn Performance - Wide horizontal chart */}
-          <BentoCard colSpan={2} interactive className="p-0 overflow-hidden">
-            <Link href="https://www.linkedin.com/in/bassotov/" target="_blank" className="block">
-              <Image
-                src="/socials/linkedin-performance.png"
-                alt="LinkedIn Performance"
-                width={400}
-                height={200}
-                className="w-full h-auto"
-              />
+            <Link
+              href="https://t.me/bassotov_blog"
+              target="_blank"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Telegram"
+            >
+              <Send className="h-5 w-5" />
             </Link>
-          </BentoCard>
-
-          {/* GitHub Profile */}
-          <BentoCard
-            title="GitHub"
-            icon={<Code className="h-5 w-5" />}
-            colSpan={2}
-          >
-            <GitHubEmbed type="profile" username="bassotov" />
-          </BentoCard>
-
-          {/* Spotify Artist */}
-          <BentoCard
-            title="Latest Music"
-            icon={<Music className="h-5 w-5" />}
-            colSpan={2}
-          >
-            <SpotifyEmbed
-              type="artist"
-              spotifyId="1mkiGsuSOF25ft6cRMEktM"
-              size="large"
-            />
-          </BentoCard>
-        </BentoGrid>
-      </main>
+            <Link
+              href="https://github.com/bassotov"
+              target="_blank"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </Link>
+            <Link
+              href="https://open.spotify.com/artist/1mkiGsuSOF25ft6cRMEktM"
+              target="_blank"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Spotify"
+            >
+              <Music className="h-5 w-5" />
+            </Link>
+          </div>
+          <p className="text-center text-sm text-muted-foreground mt-4">
+            © {new Date().getFullYear()} Pasha Barbashin
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
