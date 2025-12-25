@@ -1,11 +1,17 @@
 import { BentoGrid, BentoCard } from "@/components/bento";
 import { YouTubeEmbed, SpotifyEmbed, GitHubEmbed } from "@/components/embeds";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Music, Video, Code, User, FileText, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
-      <main className="container mx-auto px-4 py-8 md:py-16">
+      <main className="mx-auto max-w-3xl px-4 py-8 md:py-16">
+        {/* Top bar with theme switcher */}
+        <div className="mb-8 flex justify-end">
+          <ThemeSwitcher />
+        </div>
+
         {/* Header */}
         <header className="mb-8 md:mb-12 text-center">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
