@@ -20,39 +20,45 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <main className="mx-auto max-w-5xl px-4 py-8 md:py-16">
-        {/* Top bar with theme switcher */}
-        <div className="mb-8 flex justify-end">
-          <ThemeSwitcher />
-        </div>
-
         {/* Header */}
-        <header className="mb-10">
-          <Image
-            src="/pic.jpg"
-            alt="Pasha Barbashin"
-            width={80}
-            height={80}
-            className="rounded-full mb-4"
-          />
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
-            Pasha Barbashin
-          </h1>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-muted-foreground">
-            <span className="flex items-center gap-1.5">
-              <MapPin className="h-4 w-4" />
-              London, UK
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Briefcase className="h-4 w-4" />
-              BCG X
-            </span>
-            <Link
-              href="mailto:pasha@barbash.in"
-              className="flex items-center gap-1.5 hover:text-primary transition-colors"
-            >
-              <Mail className="h-4 w-4" />
-              pasha@barbash.in
-            </Link>
+        <header className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <Image
+              src="/pic.jpg"
+              alt="Pasha Barbashin"
+              width={80}
+              height={80}
+              className="rounded-full mb-4"
+            />
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+              Pasha Barbashin
+            </h1>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <MapPin className="h-4 w-4" />
+                London, UK
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Briefcase className="h-4 w-4" />
+                BCG X
+              </span>
+              <Link
+                href="mailto:pasha@barbash.in"
+                className="flex items-center gap-1.5 hover:text-primary transition-colors"
+              >
+                <Mail className="h-4 w-4" />
+                pasha@barbash.in
+              </Link>
+            </div>
+          </div>
+
+          {/* Bio in code style */}
+          <div className="font-mono text-base text-muted-foreground border-l-2 border-muted-foreground/30 pl-4">
+            <p className="text-foreground/80">{"// 2025 was a pivotal year for me:"}</p>
+            <p>{"- Learned I enjoy crafting digital products"}</p>
+            <p>{"- Kept consistency at sport"}</p>
+            <p>{"- Started regular posting on X/TG/LI"}</p>
+            <p>{"- Earned my first $30 online"}</p>
           </div>
         </header>
 
@@ -123,7 +129,7 @@ export default function Home() {
                   <Music className="h-5 w-5" />
                   Spotify
                 </h3>
-                <p className="text-white/70 text-sm">Top 1% Sleep Token fan</p>
+                <p className="text-white/70 text-sm">Top-1% Sleep Token fan</p>
               </div>
             </Link>
 
@@ -302,9 +308,14 @@ export default function Home() {
               <Music className="h-5 w-5" />
             </Link>
           </div>
-          <p className="text-center text-sm text-muted-foreground mt-4">
-            © {new Date().getFullYear()} Pasha Barbashin
-          </p>
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Pasha Barbashin
+            </p>
+            <div className="scale-75">
+              <ThemeSwitcher />
+            </div>
+          </div>
         </div>
       </footer>
     </div>
