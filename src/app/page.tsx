@@ -135,73 +135,72 @@ export default function Home() {
             </div>
           </BentoCard>
 
-          {/* WHOOP Stats */}
-          <BentoCard colSpan={2} rowSpan={2} interactive>
-            <Link href="#" className="block relative w-full h-full min-h-[300px]">
+          {/* WHOOP Stats - Vertical phone screenshot */}
+          <BentoCard colSpan={1} rowSpan={3} interactive className="p-0 overflow-hidden">
+            <Link href="#" className="block relative w-full h-full">
               <Image
                 src="/socials/whoop-2025.png"
                 alt="WHOOP 2025 Year in Review"
                 fill
-                className="object-contain rounded-lg"
+                className="object-cover"
               />
             </Link>
           </BentoCard>
 
-          {/* GitHub Contributions */}
-          <BentoCard colSpan={2} interactive>
-            <Link href="https://github.com/bassotov" target="_blank" className="block">
-              <Image
-                src="/socials/github-contributions.png"
-                alt="GitHub Contributions"
-                width={400}
-                height={150}
-                className="w-full rounded-lg"
-              />
-            </Link>
-          </BentoCard>
-
-          {/* Spotify Wrapped */}
-          <BentoCard colSpan={2} rowSpan={2} interactive>
+          {/* Spotify Wrapped - Vertical phone screenshot */}
+          <BentoCard colSpan={1} rowSpan={3} interactive className="p-0 overflow-hidden">
             <Link
               href="https://open.spotify.com/artist/1mkiGsuSOF25ft6cRMEktM"
               target="_blank"
-              className="block relative w-full h-full min-h-[300px]"
+              className="block relative w-full h-full"
             >
               <Image
                 src="/socials/spotify-wrapped.png"
                 alt="Spotify Wrapped 2025"
                 fill
-                className="object-contain rounded-lg"
+                className="object-cover"
               />
             </Link>
           </BentoCard>
 
-          {/* X Analytics */}
-          <BentoCard colSpan={2} interactive>
+          {/* X Analytics - Tall dashboard */}
+          <BentoCard colSpan={2} rowSpan={2} interactive className="p-0 overflow-hidden">
             <Link
               href="https://x.com/pasha_barbashin"
               target="_blank"
-              className="block"
+              className="block relative w-full h-full"
             >
               <Image
                 src="/socials/x-analytics.png"
                 alt="X Analytics"
-                width={400}
-                height={200}
-                className="w-full rounded-lg"
+                fill
+                className="object-cover"
               />
             </Link>
           </BentoCard>
 
-          {/* LinkedIn Performance */}
-          <BentoCard colSpan={2} interactive>
+          {/* GitHub Contributions - Wide horizontal banner */}
+          <BentoCard colSpan={4} interactive className="p-0 overflow-hidden">
+            <Link href="https://github.com/bassotov" target="_blank" className="block">
+              <Image
+                src="/socials/github-contributions.png"
+                alt="GitHub Contributions"
+                width={800}
+                height={150}
+                className="w-full h-auto"
+              />
+            </Link>
+          </BentoCard>
+
+          {/* LinkedIn Performance - Wide horizontal chart */}
+          <BentoCard colSpan={2} interactive className="p-0 overflow-hidden">
             <Link href="https://www.linkedin.com/in/bassotov/" target="_blank" className="block">
               <Image
                 src="/socials/linkedin-performance.png"
                 alt="LinkedIn Performance"
                 width={400}
                 height={200}
-                className="w-full rounded-lg"
+                className="w-full h-auto"
               />
             </Link>
           </BentoCard>
