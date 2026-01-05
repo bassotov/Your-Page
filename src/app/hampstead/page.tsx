@@ -20,40 +20,40 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 
 export default function HampsteadPage() {
   return (
-    <div className="h-screen w-screen relative">
+    <div className="h-[100dvh] w-screen relative overflow-hidden">
       <Map center={HAMPSTEAD_CENTER} zoom={DEFAULT_ZOOM}>
         {/* Header overlay */}
-        <div className="absolute top-4 left-4 z-10 max-w-sm">
-          <div className="rounded-xl border bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg p-4">
+        <div className="absolute top-2 left-2 right-2 sm:right-auto sm:left-4 sm:top-4 z-10 sm:max-w-sm">
+          <div className="rounded-xl border bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg p-3 sm:p-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-2"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-1 sm:mb-2"
             >
               <ArrowLeft className="h-3 w-3" />
               Back
             </Link>
-            <h1 className="text-2xl font-bold tracking-tight">
+            <h1 className="text-lg sm:text-2xl font-bold tracking-tight">
               Welcome to Hampstead!
             </h1>
-            <p className="text-sm text-muted-foreground mt-2">
-              Dima & Nuriya – hope you enjoy our local area. Here's a quick start guide of the places we visit every week.
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">
+              Dima & Nuriya – hope you enjoy our local area. Here&apos;s a quick start guide of the places we visit every week.
             </p>
           </div>
         </div>
 
-        {/* Category legend */}
-        <div className="absolute bottom-4 left-4 z-10">
-          <div className="rounded-xl border bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg p-3">
-            <p className="text-xs font-medium text-muted-foreground mb-2">
+        {/* Category legend - horizontal scroll on mobile, vertical on desktop */}
+        <div className="absolute bottom-2 left-2 right-14 sm:right-auto sm:bottom-4 sm:left-4 z-10">
+          <div className="rounded-xl border bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg p-2 sm:p-3">
+            <p className="text-xs font-medium text-muted-foreground mb-1.5 sm:mb-2 hidden sm:block">
               Categories
             </p>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex sm:flex-col gap-2 sm:gap-1.5 overflow-x-auto pb-0.5 sm:pb-0">
               {(Object.keys(categoryConfig) as PlaceCategory[]).map(
                 (category) => {
                   const config = categoryConfig[category];
                   const Icon = config.icon;
                   return (
-                    <div key={category} className="flex items-center gap-2">
+                    <div key={category} className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
                       <div
                         className={cn(
                           "size-5 rounded-full flex items-center justify-center",
@@ -62,7 +62,7 @@ export default function HampsteadPage() {
                       >
                         <Icon className="size-3 text-white" />
                       </div>
-                      <span className="text-xs">{config.label}</span>
+                      <span className="text-xs whitespace-nowrap hidden sm:inline">{config.label}</span>
                     </div>
                   );
                 }
@@ -96,7 +96,7 @@ export default function HampsteadPage() {
                 </div>
               </MarkerContent>
               <MarkerPopup closeButton>
-                <div className="min-w-[220px] max-w-[400px] pr-8 pl-2 pt-2 pb-2">
+                <div className="min-w-[180px] max-w-[calc(100vw-60px)] sm:max-w-[350px] pr-8 pl-2 pt-2 pb-2">
                   <div className="flex items-start gap-2 mb-2">
                     <div
                       className={cn(
