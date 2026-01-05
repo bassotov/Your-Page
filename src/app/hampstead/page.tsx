@@ -41,19 +41,19 @@ export default function HampsteadPage() {
           </div>
         </div>
 
-        {/* Category legend - horizontal scroll on mobile, vertical on desktop */}
-        <div className="absolute bottom-2 left-2 right-14 sm:right-auto sm:bottom-4 sm:left-4 z-10">
-          <div className="rounded-xl border bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg p-2 sm:p-3">
-            <p className="text-xs font-medium text-muted-foreground mb-1.5 sm:mb-2 hidden sm:block">
+        {/* Category legend - hidden on mobile */}
+        <div className="absolute bottom-4 left-4 z-10 hidden sm:block">
+          <div className="rounded-xl border bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg p-3">
+            <p className="text-xs font-medium text-muted-foreground mb-2">
               Categories
             </p>
-            <div className="flex sm:flex-col gap-2 sm:gap-1.5 overflow-x-auto pb-0.5 sm:pb-0">
+            <div className="flex flex-col gap-1.5">
               {(Object.keys(categoryConfig) as PlaceCategory[]).map(
                 (category) => {
                   const config = categoryConfig[category];
                   const Icon = config.icon;
                   return (
-                    <div key={category} className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+                    <div key={category} className="flex items-center gap-2">
                       <div
                         className={cn(
                           "size-5 rounded-full flex items-center justify-center",
@@ -62,7 +62,7 @@ export default function HampsteadPage() {
                       >
                         <Icon className="size-3 text-white" />
                       </div>
-                      <span className="text-xs whitespace-nowrap hidden sm:inline">{config.label}</span>
+                      <span className="text-xs">{config.label}</span>
                     </div>
                   );
                 }
