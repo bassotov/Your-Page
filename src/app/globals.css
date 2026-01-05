@@ -171,3 +171,18 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+@layer base {
+  .maplibregl-popup,
+  .maplibregl-popup-content {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+  }
+  .maplibregl-popup-tip {
+    display: none !important;
+  }
+}
