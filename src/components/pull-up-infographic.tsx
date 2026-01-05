@@ -125,7 +125,11 @@ const CustomCursor = ({ x, y, width, height }: CustomCursorProps) => {
   );
 };
 
-export function PullUpInfographic() {
+interface PullUpInfographicProps {
+  forceDark?: boolean;
+}
+
+export function PullUpInfographic({ forceDark = false }: PullUpInfographicProps) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -134,7 +138,7 @@ export function PullUpInfographic() {
   }, []);
 
   // Default to dark theme colors during SSR to avoid hydration mismatch
-  const isDark = !mounted || resolvedTheme === "dark";
+  const isDark = forceDark || !mounted || resolvedTheme === "dark";
 
   const chartColors = {
     stroke: isDark ? "#52b788" : "#2d6a4f",
