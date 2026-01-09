@@ -70,7 +70,13 @@ export default function WorkoutTimer() {
       const params = new URLSearchParams(window.location.search);
       const encoded = params.get('w');
       if (encoded) {
-        const parsed = JSON.parse(atob(encoded)) as Workout;
+        // Fix URL encoding: + becomes space in URL params, convert back
+        const fixedEncoded = encoded.replace(/ /g, '+');
+        // Decode base64 with proper UTF-8 handling
+        const binaryString = atob(fixedEncoded);
+        const bytes = Uint8Array.from(binaryString, (c) => c.charCodeAt(0));
+        const jsonString = new TextDecoder().decode(bytes);
+        const parsed = JSON.parse(jsonString) as Workout;
         setWorkout(parsed);
         setPhase('ready');
       } else {
