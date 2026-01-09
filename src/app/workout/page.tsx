@@ -55,27 +55,32 @@ const DEMO_WORKOUT: Workout = {
   ]
 };
 
-function getWorkoutFromURL(): Workout | null {
-  try {
-    const params = new URLSearchParams(window.location.search);
-    const encoded = params.get('w');
-    if (!encoded) return null;
-    return JSON.parse(atob(encoded)) as Workout;
-  } catch (e) {
-    console.error('Failed to parse workout:', e);
-    return null;
-  }
-}
-
 export default function WorkoutTimer() {
-  const urlWorkout = useMemo(() => getWorkoutFromURL(), []);
-  const [workout, setWorkout] = useState(urlWorkout);
-  const [phase, setPhase] = useState(urlWorkout ? 'ready' : 'demo');
+  const [workout, setWorkout] = useState<Workout | null>(null);
+  const [phase, setPhase] = useState<string>('loading');
   const [currentRound, setCurrentRound] = useState(1);
   const [exerciseIndex, setExerciseIndex] = useState(0);
   const [cooldownIndex, setCooldownIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+
+  // Parse URL on mount (client-side only)
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const encoded = params.get('w');
+      if (encoded) {
+        const parsed = JSON.parse(atob(encoded)) as Workout;
+        setWorkout(parsed);
+        setPhase('ready');
+      } else {
+        setPhase('demo');
+      }
+    } catch (e) {
+      console.error('Failed to parse workout:', e);
+      setPhase('demo');
+    }
+  }, []);
 
   const exercises = workout?.exercises || [];
   const currentExercise = exercises[exerciseIndex];
@@ -203,6 +208,16 @@ export default function WorkoutTimer() {
     cooldown: '🧘 COOLDOWN',
     complete: '🎉 DONE',
   }[phase] || '';
+
+  // LOADING STATE
+  if (phase === 'loading') {
+    return (
+      <div className="min-h-screen bg-slate-800 flex flex-col items-center justify-center p-6 text-white">
+        <div className="text-6xl mb-6 animate-pulse">⏱️</div>
+        <p className="text-slate-400">Loading workout...</p>
+      </div>
+    );
+  }
 
   // DEMO/LANDING
   if (phase === 'demo') {
