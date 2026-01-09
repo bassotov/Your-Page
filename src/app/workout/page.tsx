@@ -18,6 +18,8 @@ interface Workout {
   restRound: number;
   cooldown: boolean;
   exercises: Exercise[];
+  lang?: 'en' | 'ru';
+  tracker?: 'whoop' | 'apple' | 'garmin' | 'none';
 }
 
 interface CooldownStretch {
@@ -26,32 +28,159 @@ interface CooldownStretch {
   desc: string;
 }
 
+type Lang = 'en' | 'ru';
+
+const translations: Record<Lang, {
+  work: string;
+  rest: string;
+  roundRest: string;
+  cooldown: string;
+  complete: string;
+  pause: string;
+  resume: string;
+  skip: string;
+  reset: string;
+  next: string;
+  roundComplete: string;
+  prepareRound: string;
+  greatWork: string;
+  workoutComplete: string;
+  startAgain: string;
+  newWorkout: string;
+  start: string;
+  video: string;
+  loading: string;
+  rounds: string;
+  min: string;
+  trackerTitle: string;
+  trackerReady: string;
+  trackerWhoop: string;
+  trackerApple: string;
+  trackerGarmin: string;
+}> = {
+  en: {
+    work: '💪 WORK',
+    rest: '😮‍💨 REST',
+    roundRest: '🔄 REST',
+    cooldown: '🧘 COOLDOWN',
+    complete: '🎉 DONE',
+    pause: '⏸️ PAUSE',
+    resume: '▶️ CONTINUE',
+    skip: '⏭️ SKIP',
+    reset: 'Reset',
+    next: 'Next:',
+    roundComplete: 'Round',
+    prepareRound: 'Prepare for round',
+    greatWork: 'Great Work!',
+    workoutComplete: 'complete ✓',
+    startAgain: 'Start Again',
+    newWorkout: 'New Workout',
+    start: 'START',
+    video: '📹 Video',
+    loading: 'Loading workout...',
+    rounds: 'rounds',
+    min: 'min',
+    trackerTitle: 'Start Tracking',
+    trackerReady: "Ready, let's go! 💪",
+    trackerWhoop: 'Open WHOOP → Activity → Strength Training',
+    trackerApple: 'Start a workout on your Apple Watch',
+    trackerGarmin: 'Start activity recording on your Garmin',
+  },
+  ru: {
+    work: '💪 РАБОТА',
+    rest: '😮‍💨 ОТДЫХ',
+    roundRest: '🔄 ОТДЫХ',
+    cooldown: '🧘 ЗАМИНКА',
+    complete: '🎉 ГОТОВО',
+    pause: '⏸️ ПАУЗА',
+    resume: '▶️ ДАЛЬШЕ',
+    skip: '⏭️ ПРОПУСТИТЬ',
+    reset: 'Сбросить',
+    next: 'Следующее:',
+    roundComplete: 'Круг',
+    prepareRound: 'Готовься к кругу',
+    greatWork: 'Отличная работа!',
+    workoutComplete: 'завершена ✓',
+    startAgain: 'Начать заново',
+    newWorkout: 'Другая тренировка',
+    start: 'НАЧАТЬ',
+    video: '📹 Видео',
+    loading: 'Загрузка тренировки...',
+    rounds: 'кругов',
+    min: 'мин',
+    trackerTitle: 'Включи трекер',
+    trackerReady: 'Готов, поехали! 💪',
+    trackerWhoop: 'Открой WHOOP → Activity → Strength Training',
+    trackerApple: 'Запусти тренировку на Apple Watch',
+    trackerGarmin: 'Запусти запись активности на Garmin',
+  },
+};
+
 // ============================================
 // URL-BASED WORKOUT TIMER
 // Reads workout config from URL: ?w=BASE64_ENCODED_JSON
 // ============================================
 
-const COOLDOWN: CooldownStretch[] = [
-  { name: 'Quad Stretch', duration: 30, desc: 'Standing, pull heel to glute, 15s per leg' },
-  { name: 'Forward Fold', duration: 30, desc: 'Legs straight, reach for toes' },
-  { name: 'Chest Stretch', duration: 30, desc: 'Hand on wall, rotate torso away' },
-  { name: 'Cat-Cow', duration: 40, desc: 'On all fours, arch and round back' },
-  { name: "Child's Pose", duration: 40, desc: 'Sit on heels, arms forward, relax' },
-  { name: 'Lying Twist', duration: 40, desc: 'On back, knees to side, 20s per side' },
-  { name: 'Hip Stretch', duration: 60, desc: 'Half pigeon, 30s per leg' },
-];
+const COOLDOWN: Record<Lang, CooldownStretch[]> = {
+  en: [
+    { name: 'Quad Stretch', duration: 30, desc: 'Standing, pull heel to glute, 15s per leg' },
+    { name: 'Forward Fold', duration: 30, desc: 'Legs straight, reach for toes' },
+    { name: 'Chest Stretch', duration: 30, desc: 'Hand on wall, rotate torso away' },
+    { name: 'Cat-Cow', duration: 40, desc: 'On all fours, arch and round back' },
+    { name: "Child's Pose", duration: 40, desc: 'Sit on heels, arms forward, relax' },
+    { name: 'Lying Twist', duration: 40, desc: 'On back, knees to side, 20s per side' },
+    { name: 'Hip Stretch', duration: 60, desc: 'Half pigeon, 30s per leg' },
+  ],
+  ru: [
+    { name: 'Растяжка квадрицепса', duration: 30, desc: 'Стоя, подтяни пятку к ягодице, 15 сек на ногу' },
+    { name: 'Наклон к ногам', duration: 30, desc: 'Ноги прямые, тянись к носкам' },
+    { name: 'Растяжка грудных', duration: 30, desc: 'Рука на стене, разверни корпус' },
+    { name: 'Кошка-корова', duration: 40, desc: 'На четвереньках, прогибай и округляй спину' },
+    { name: 'Поза ребёнка', duration: 40, desc: 'Сядь на пятки, руки вперёд, расслабься' },
+    { name: 'Лежачий твист', duration: 40, desc: 'На спине, колени в сторону, 20 сек на сторону' },
+    { name: 'Растяжка бёдер', duration: 60, desc: 'Полуголубь, 30 сек на ногу' },
+  ],
+};
 
 const DEMO_WORKOUT: Workout = {
-  name: '💪 Demo Workout',
+  name: '💪 Full Feature Demo',
   rounds: 2,
   restEx: 15,
   restRound: 60,
   cooldown: true,
+  lang: 'en',
+  tracker: 'whoop',
   exercises: [
-    { name: 'Jumping Jacks', reps: '30 sec', duration: 30 },
-    { name: 'Squats', reps: 'x15', duration: 45 },
-    { name: 'Push-ups', reps: 'x10', duration: 45 },
-    { name: 'Plank', reps: '30 sec', duration: 30 },
+    {
+      name: 'Goblet Squats',
+      reps: 'x12',
+      duration: 45,
+      weight: '16kg',
+      equipment: 'dumbbell',
+      video: 'https://www.youtube.com/results?search_query=goblet+squat+form'
+    },
+    {
+      name: 'Push-ups',
+      reps: 'x10',
+      duration: 40,
+      equipment: 'bodyweight',
+      video: 'https://www.youtube.com/results?search_query=push+up+proper+form'
+    },
+    {
+      name: 'Dumbbell Rows',
+      reps: 'x10 each',
+      duration: 50,
+      weight: '12kg',
+      equipment: 'dumbbell + bench',
+      video: 'https://www.youtube.com/results?search_query=dumbbell+row+form'
+    },
+    {
+      name: 'Plank',
+      reps: '30 sec',
+      duration: 30,
+      equipment: 'mat',
+      video: 'https://www.youtube.com/results?search_query=plank+proper+form'
+    },
   ]
 };
 
@@ -63,6 +192,12 @@ export default function WorkoutTimer() {
   const [cooldownIndex, setCooldownIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [showTrackerPopup, setShowTrackerPopup] = useState(false);
+
+  // Get language from workout or default to 'en'
+  const lang: Lang = workout?.lang || 'en';
+  const t = translations[lang];
+  const cooldownStretches = COOLDOWN[lang];
 
   // Parse URL on mount (client-side only)
   useEffect(() => {
@@ -95,7 +230,7 @@ export default function WorkoutTimer() {
 
   const exercises = workout?.exercises || [];
   const currentExercise = exercises[exerciseIndex];
-  const currentStretch = COOLDOWN[cooldownIndex];
+  const currentStretch = cooldownStretches[cooldownIndex];
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
 
@@ -105,9 +240,9 @@ export default function WorkoutTimer() {
     const restTime = (exercises.length - 1) * workout.restEx;
     const roundTime = exTime + restTime;
     const total = (roundTime * workout.rounds) + ((workout.rounds - 1) * workout.restRound);
-    const cooldownTime = workout.cooldown ? COOLDOWN.reduce((sum: number, s) => sum + s.duration, 0) : 0;
+    const cooldownTime = workout.cooldown ? cooldownStretches.reduce((sum: number, s) => sum + s.duration, 0) : 0;
     return Math.round((total + cooldownTime) / 60);
-  }, [workout, exercises]);
+  }, [workout, exercises, cooldownStretches]);
 
   const playBeep = useCallback(() => {
     try {
@@ -139,7 +274,7 @@ export default function WorkoutTimer() {
       } else if (workout.cooldown) {
         setPhase('cooldown');
         setCooldownIndex(0);
-        setTimeLeft(COOLDOWN[0].duration);
+        setTimeLeft(cooldownStretches[0].duration);
       } else {
         setPhase('complete');
         setIsRunning(false);
@@ -154,15 +289,15 @@ export default function WorkoutTimer() {
       setPhase('exercise');
       setTimeLeft(exercises[0].duration);
     } else if (phase === 'cooldown') {
-      if (cooldownIndex < COOLDOWN.length - 1) {
+      if (cooldownIndex < cooldownStretches.length - 1) {
         setCooldownIndex(i => i + 1);
-        setTimeLeft(COOLDOWN[cooldownIndex + 1].duration);
+        setTimeLeft(cooldownStretches[cooldownIndex + 1].duration);
       } else {
         setPhase('complete');
         setIsRunning(false);
       }
     }
-  }, [phase, exerciseIndex, currentRound, cooldownIndex, exercises, workout]);
+  }, [phase, exerciseIndex, currentRound, cooldownIndex, exercises, workout, cooldownStretches]);
 
   useEffect(() => {
     if (!isRunning || timeLeft <= 0) return;
@@ -182,10 +317,40 @@ export default function WorkoutTimer() {
     }
   }, [isRunning, timeLeft, phase, moveToNext, playBeep]);
 
+  const handleStartClick = () => {
+    // Show tracker popup if user has a tracker configured
+    if (workout?.tracker && workout.tracker !== 'none') {
+      setShowTrackerPopup(true);
+    } else {
+      startWorkout();
+    }
+  };
+
   const startWorkout = () => {
+    setShowTrackerPopup(false);
     setPhase('exercise');
     setTimeLeft(exercises[0].duration);
     setIsRunning(true);
+  };
+
+  const getTrackerMessage = () => {
+    if (!workout?.tracker) return '';
+    switch (workout.tracker) {
+      case 'whoop': return t.trackerWhoop;
+      case 'apple': return t.trackerApple;
+      case 'garmin': return t.trackerGarmin;
+      default: return '';
+    }
+  };
+
+  const getTrackerIcon = () => {
+    if (!workout?.tracker) return '⌚';
+    switch (workout.tracker) {
+      case 'whoop': return '⌚';
+      case 'apple': return '⌚';
+      case 'garmin': return '⌚';
+      default: return '⌚';
+    }
   };
 
   const reset = () => {
@@ -195,6 +360,7 @@ export default function WorkoutTimer() {
     setCooldownIndex(0);
     setTimeLeft(0);
     setIsRunning(false);
+    setShowTrackerPopup(false);
   };
 
   const loadDemo = () => {
@@ -213,19 +379,19 @@ export default function WorkoutTimer() {
   }[phase];
 
   const phaseLabel = {
-    exercise: '💪 WORK',
-    rest: '😮‍💨 REST',
-    roundRest: '🔄 REST',
-    cooldown: '🧘 COOLDOWN',
-    complete: '🎉 DONE',
+    exercise: t.work,
+    rest: t.rest,
+    roundRest: t.roundRest,
+    cooldown: t.cooldown,
+    complete: t.complete,
   }[phase] || '';
 
   // LOADING STATE
   if (phase === 'loading') {
     return (
-      <div className="min-h-screen bg-slate-800 flex flex-col items-center justify-center p-6 text-white">
+      <div className="min-h-dvh bg-slate-800 flex flex-col items-center justify-center p-6 safe-area-inset text-white">
         <div className="text-6xl mb-6 animate-pulse">⏱️</div>
-        <p className="text-slate-400">Loading workout...</p>
+        <p className="text-slate-400">{t.loading}</p>
       </div>
     );
   }
@@ -233,7 +399,7 @@ export default function WorkoutTimer() {
   // DEMO/LANDING
   if (phase === 'demo') {
     return (
-      <div className="min-h-screen bg-slate-800 flex flex-col items-center justify-center p-6 text-white">
+      <div className="min-h-dvh bg-slate-800 flex flex-col items-center justify-center p-6 safe-area-inset text-white">
         <div className="text-6xl mb-6">⏱️</div>
         <h1 className="text-3xl font-bold mb-2 text-center">Workout Timer</h1>
         <p className="text-slate-400 text-center mb-8 max-w-md">
@@ -251,8 +417,12 @@ export default function WorkoutTimer() {
           onClick={loadDemo}
           className="bg-emerald-500 hover:bg-emerald-400 font-bold py-4 px-8 rounded-xl text-lg transition-all"
         >
-          Try Demo Workout
+          Try Full Feature Demo
         </button>
+
+        <p className="mt-3 text-xs text-slate-500">
+          Includes: tracker popup, equipment preview, video links
+        </p>
 
         <div className="mt-8 text-slate-500 text-sm">
           <p>URL format: <code className="bg-slate-700 px-2 py-1 rounded">?w=BASE64_JSON</code></p>
@@ -264,11 +434,36 @@ export default function WorkoutTimer() {
   // READY SCREEN
   if (phase === 'ready' && workout) {
     return (
-      <div className="min-h-screen bg-slate-800 flex flex-col items-center justify-center p-6 text-white">
+      <div className="min-h-dvh bg-slate-800 flex flex-col items-center justify-center p-6 safe-area-inset text-white relative">
+        {/* Tracker Popup */}
+        {showTrackerPopup && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+            <div className="bg-slate-700 rounded-2xl p-6 max-w-sm w-full">
+              <div className="text-4xl text-center mb-4">{getTrackerIcon()}</div>
+              <h2 className="text-xl font-bold text-center mb-2">{t.trackerTitle}</h2>
+              <p className="text-center text-slate-300 mb-6">{getTrackerMessage()}</p>
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={startWorkout}
+                  className="bg-emerald-500 hover:bg-emerald-400 font-bold py-4 rounded-xl text-lg transition-all"
+                >
+                  {t.trackerReady}
+                </button>
+                <button
+                  onClick={() => setShowTrackerPopup(false)}
+                  className="bg-slate-600 hover:bg-slate-500 font-bold py-3 rounded-xl transition-all"
+                >
+                  ← {t.reset}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <h1 className="text-2xl font-bold mb-2">{workout.name}</h1>
         <p className="text-slate-400 mb-4">
-          {workout.rounds} rounds • ~{totalDuration} min
-          {workout.cooldown && ' • + cooldown'}
+          {workout.rounds} {t.rounds} • ~{totalDuration} {t.min}
+          {workout.cooldown && ` • + ${t.cooldown.replace(/[^\w\s]/g, '').trim().toLowerCase()}`}
         </p>
 
         <div className="bg-slate-700 rounded-xl p-4 mb-6 w-full max-w-md">
@@ -283,10 +478,10 @@ export default function WorkoutTimer() {
         </div>
 
         <button
-          onClick={startWorkout}
+          onClick={handleStartClick}
           className="bg-emerald-500 hover:bg-emerald-400 font-bold py-5 px-14 rounded-2xl text-xl transition-all transform hover:scale-105 active:scale-95"
         >
-          START
+          {t.start}
         </button>
       </div>
     );
@@ -295,20 +490,20 @@ export default function WorkoutTimer() {
   // COMPLETE SCREEN
   if (phase === 'complete' && workout) {
     return (
-      <div className={`min-h-screen ${bgColor} flex flex-col items-center justify-center p-6 text-white`}>
+      <div className={`min-h-dvh ${bgColor} flex flex-col items-center justify-center p-6 safe-area-inset text-white`}>
         <div className="text-6xl mb-6">🎉</div>
-        <h1 className="text-4xl font-bold mb-4">Great Work!</h1>
-        <p className="text-xl mb-8 opacity-90">{workout.name} complete ✓</p>
+        <h1 className="text-4xl font-bold mb-4">{t.greatWork}</h1>
+        <p className="text-xl mb-8 opacity-90">{workout.name} {t.workoutComplete}</p>
 
         <div className="flex flex-col gap-3">
           <button onClick={reset} className="bg-white/20 hover:bg-white/30 font-bold py-4 px-8 rounded-xl transition-all">
-            Start Again
+            {t.startAgain}
           </button>
-          <button 
+          <button
             onClick={() => { setWorkout(null); setPhase('demo'); }}
             className="bg-black/20 hover:bg-black/30 font-bold py-3 px-8 rounded-xl transition-all"
           >
-            New Workout
+            {t.newWorkout}
           </button>
         </div>
       </div>
@@ -318,11 +513,11 @@ export default function WorkoutTimer() {
   // COOLDOWN SCREEN
   if (phase === 'cooldown') {
     return (
-      <div className={`min-h-screen ${bgColor} flex flex-col text-white transition-colors duration-500`}>
-        <div className="flex justify-between items-center p-4 bg-black/20">
+      <div className={`min-h-dvh ${bgColor} flex flex-col text-white transition-colors duration-500`}>
+        <div className="flex justify-between items-center p-4 safe-top bg-black/20">
           <span className="text-lg font-semibold">{phaseLabel}</span>
           <div className="flex gap-1.5">
-            {COOLDOWN.map((_, i) => (
+            {cooldownStretches.map((_, i) => (
               <div key={i} className={`w-3 h-3 rounded-full ${i < cooldownIndex ? 'bg-white/40' : i === cooldownIndex ? 'bg-white' : 'bg-black/20'}`} />
             ))}
           </div>
@@ -334,16 +529,16 @@ export default function WorkoutTimer() {
           <div className="text-8xl font-mono font-bold">{formatTime(timeLeft)}</div>
         </div>
 
-        <div className="p-6 flex flex-col items-center gap-4">
+        <div className="p-6 safe-bottom flex flex-col items-center gap-4">
           <div className="flex gap-4">
             <button onClick={() => setIsRunning(!isRunning)} className="bg-white/20 hover:bg-white/30 font-bold py-4 px-8 rounded-xl text-xl transition-all">
-              {isRunning ? '⏸️ PAUSE' : '▶️ CONTINUE'}
+              {isRunning ? t.pause : t.resume}
             </button>
             <button onClick={moveToNext} className="bg-black/20 hover:bg-black/30 font-bold py-4 px-8 rounded-xl text-xl transition-all">
-              ⏭️ SKIP
+              {t.skip}
             </button>
           </div>
-          <button onClick={reset} className="opacity-40 hover:opacity-100 transition-opacity text-sm">Reset</button>
+          <button onClick={reset} className="opacity-40 hover:opacity-100 transition-opacity text-sm">{t.reset}</button>
         </div>
       </div>
     );
@@ -353,8 +548,8 @@ export default function WorkoutTimer() {
   if (!workout) return null;
 
   return (
-    <div className={`min-h-screen ${bgColor} flex flex-col text-white transition-colors duration-500`}>
-      <div className="flex justify-between items-center p-4 bg-black/20">
+    <div className={`min-h-dvh ${bgColor} flex flex-col text-white transition-colors duration-500`}>
+      <div className="flex justify-between items-center p-4 safe-top bg-black/20">
         <span className="text-lg font-semibold">{phaseLabel}</span>
         <div className="flex items-center gap-4">
           <div className="flex gap-2">
@@ -386,7 +581,7 @@ export default function WorkoutTimer() {
             </div>
             {currentExercise.video && (
               <a href={currentExercise.video} target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 underline transition-opacity mb-4">
-                📹 Video
+                {t.video}
               </a>
             )}
           </>
@@ -394,36 +589,48 @@ export default function WorkoutTimer() {
 
         {phase === 'rest' && (
           <div className="text-center">
-            <p className="text-xl mb-2 opacity-70">Next:</p>
-            <h1 className="text-5xl font-bold mb-6">{exercises[exerciseIndex + 1]?.name}</h1>
-            {exercises[exerciseIndex + 1]?.equipment && (
-              <div className="bg-black/20 px-6 py-3 rounded-xl inline-block">
-                <span className="text-xl">🏋️ {exercises[exerciseIndex + 1].equipment}</span>
-              </div>
-            )}
+            <p className="text-xl mb-2 opacity-70">{t.next}</p>
+            <h1 className="text-5xl font-bold mb-4">{exercises[exerciseIndex + 1]?.name}</h1>
+            <div className="flex flex-col gap-2 items-center">
+              {exercises[exerciseIndex + 1]?.weight && exercises[exerciseIndex + 1]?.weight !== '—' && (
+                <div className="bg-black/20 px-6 py-3 rounded-xl inline-block">
+                  <span className="text-xl">🏋️ {exercises[exerciseIndex + 1].weight}</span>
+                </div>
+              )}
+              {exercises[exerciseIndex + 1]?.equipment && (
+                <div className="bg-black/20 px-6 py-3 rounded-xl inline-block">
+                  <span className="text-xl">🎒 {exercises[exerciseIndex + 1].equipment}</span>
+                </div>
+              )}
+            </div>
           </div>
         )}
 
         {phase === 'roundRest' && (
           <div className="text-center">
-            <h1 className="text-5xl font-bold mb-2">Round {currentRound} ✓</h1>
-            <p className="text-2xl opacity-80 mb-6">Prepare for round {currentRound + 1}</p>
+            <h1 className="text-5xl font-bold mb-2">{t.roundComplete} {currentRound} ✓</h1>
+            <p className="text-2xl opacity-80 mb-4">{t.prepareRound} {currentRound + 1}</p>
+            {exercises[0]?.equipment && (
+              <div className="bg-black/20 px-6 py-3 rounded-xl inline-block">
+                <span className="text-xl">🎒 {exercises[0].equipment}</span>
+              </div>
+            )}
           </div>
         )}
 
         <div className="text-8xl font-mono font-bold my-8">{formatTime(timeLeft)}</div>
       </div>
 
-      <div className="p-6 flex flex-col items-center gap-4">
+      <div className="p-6 safe-bottom flex flex-col items-center gap-4">
         <div className="flex gap-4">
           <button onClick={() => setIsRunning(!isRunning)} className="bg-white/20 hover:bg-white/30 font-bold py-4 px-8 rounded-xl text-xl transition-all">
-            {isRunning ? '⏸️ PAUSE' : '▶️ CONTINUE'}
+            {isRunning ? t.pause : t.resume}
           </button>
           <button onClick={moveToNext} className="bg-black/20 hover:bg-black/30 font-bold py-4 px-8 rounded-xl text-xl transition-all">
-            ⏭️ SKIP
+            {t.skip}
           </button>
         </div>
-        <button onClick={reset} className="opacity-40 hover:opacity-100 transition-opacity text-sm">Reset</button>
+        <button onClick={reset} className="opacity-40 hover:opacity-100 transition-opacity text-sm">{t.reset}</button>
       </div>
     </div>
   );
