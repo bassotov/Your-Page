@@ -70,10 +70,15 @@ export default function WorkoutTimer() {
       const params = new URLSearchParams(window.location.search);
       const encoded = params.get('w');
       if (encoded) {
-        // Fix URL encoding: + becomes space in URL params, convert back
-        const fixedEncoded = encoded.replace(/ /g, '+');
+        // Convert URL-safe base64 to standard base64
+        // URL-safe uses - instead of + and _ instead of /
+        // Also fix URL encoding: + becomes space in URL params
+        const standardBase64 = encoded
+          .replace(/-/g, '+')
+          .replace(/_/g, '/')
+          .replace(/ /g, '+');
         // Decode base64 with proper UTF-8 handling
-        const binaryString = atob(fixedEncoded);
+        const binaryString = atob(standardBase64);
         const bytes = Uint8Array.from(binaryString, (c) => c.charCodeAt(0));
         const jsonString = new TextDecoder().decode(bytes);
         const parsed = JSON.parse(jsonString) as Workout;
