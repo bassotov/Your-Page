@@ -1,4 +1,3 @@
-import { SpotifyEmbed, GitHubEmbed } from "@/components/embeds";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { PullUpInfographic } from "@/components/pull-up-infographic";
 import Image from "next/image";
@@ -66,12 +65,34 @@ export default function Home() {
         {/* Projects Section */}
         <section className="mb-16">
           <h2 className="text-2xl font-semibold mb-4">🚀 Projects</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {/* Twitter Screenshot - Vertical */}
+          <div className="grid grid-cols-2 gap-4">
+            {/* Workout Timer */}
+            <Link
+              href="https://workout-timer.app"
+              target="_blank"
+              className="group relative aspect-square overflow-hidden rounded-xl"
+            >
+              <Image
+                src="/workout-timer.png"
+                alt="Workout Timer"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 className="text-white font-semibold text-lg flex items-center gap-2">
+                  Workout Timer
+                  <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </h3>
+                <p className="text-white/70 text-sm">Level up your AI workouts</p>
+              </div>
+            </Link>
+
+            {/* Twitter Screenshot */}
             <Link
               href="https://chromewebstore.google.com/detail/twitter-screenshot/ggddbhbgmlkapnmphojkeoeefdcglfna"
               target="_blank"
-              className="group relative aspect-[9/16] md:aspect-[4/5] overflow-hidden rounded-xl"
+              className="group relative aspect-square overflow-hidden rounded-xl"
             >
               <Image
                 src="/Twitter Screenshot.png"
@@ -93,7 +114,7 @@ export default function Home() {
             <Link
               href="https://soka.health"
               target="_blank"
-              className="group relative aspect-[9/16] md:aspect-[4/5] overflow-hidden rounded-xl"
+              className="group relative aspect-square overflow-hidden rounded-xl"
             >
               <Image
                 src="/Sōka.png"
@@ -111,11 +132,11 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* X-Wizard - Horizontal on mobile, vertical on desktop */}
+            {/* X-Wizard */}
             <Link
               href="https://www.linkedin.com/feed/update/urn:li:activity:7404105038173741056/"
               target="_blank"
-              className="group relative col-span-2 md:col-span-1 aspect-[21/9] md:aspect-[4/5] overflow-hidden rounded-xl"
+              className="group relative aspect-square overflow-hidden rounded-xl"
             >
               <Image
                 src="/X-Wizard.PNG"
