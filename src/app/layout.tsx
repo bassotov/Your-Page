@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "Pasha Barbashin",
     template: "%s | Pasha Barbashin",
   },
-  description: "Shipping products, getting in shape, delivering on 9-5",
+  description: "Ex-consultant turned indie hacker. Building products with a soul, agentising operations in BCG X.",
   authors: [{ name: "Pasha Barbashin" }],
   creator: "Pasha Barbashin",
   openGraph: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://barbash.in",
     title: "Pasha Barbashin",
-    description: "Shipping products, getting in shape, delivering on 9-5",
+    description: "Ex-consultant turned indie hacker. Building products with a soul, agentising operations in BCG X.",
     siteName: "Pasha Barbashin",
     images: [
       {
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Pasha Barbashin",
-    description: "Shipping products, getting in shape, delivering on 9-5",
-    creator: "@pashab2002",
+    description: "Ex-consultant turned indie hacker. Building products with a soul, agentising operations in BCG X.",
+    creator: "@pasha_barbashin",
     images: ["/og-image.png"],
   },
   icons: {

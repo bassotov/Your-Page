@@ -3,11 +3,10 @@ import {
   Store,
   ShoppingCart,
   TreePine,
-  Home,
   type LucideIcon,
 } from "lucide-react";
 
-export type PlaceCategory = "cafe" | "specialty" | "groceries" | "parks" | "home";
+export type PlaceCategory = "cafe" | "specialty" | "groceries" | "parks";
 
 export interface Place {
   id: string;
@@ -43,25 +42,9 @@ export const categoryConfig: Record<
     icon: TreePine,
     label: "Parks & Walking",
   },
-  home: {
-    color: "bg-purple-500",
-    icon: Home,
-    label: "Starting Point",
-  },
 };
 
 export const places: Place[] = [
-  // Starting Point
-  {
-    id: "home",
-    name: "Your New Home",
-    address: "Fancroft Avenue & Heath Drive",
-    category: "home",
-    description: "Welcome to the neighbourhood! This is your starting point.",
-    highlights: ["🏠 Home sweet home"],
-    coordinates: [-0.188893, 51.557503],
-  },
-
   // Cafes & Restaurants
   {
     id: "ginger-and-white",
@@ -233,6 +216,6 @@ export const places: Place[] = [
   },
 ];
 
-// Center of Hampstead for the map (home location)
+// Center of Hampstead for the map
 export const HAMPSTEAD_CENTER: [number, number] = [-0.188893, 51.557503];
 export const DEFAULT_ZOOM = 15;

@@ -1,6 +1,21 @@
+import type { Metadata } from "next";
 import { PullUpInfographic } from "@/components/pull-up-infographic";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "My First 10 Pull-Ups",
+  description: "From zero to 10 consecutive pull-ups — tracking the progress and what worked.",
+  openGraph: {
+    title: "My First 10 Pull-Ups | Pasha Barbashin",
+    description: "From zero to 10 consecutive pull-ups — tracking the progress and what worked.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "My First 10 Pull-Ups | Pasha Barbashin",
+    description: "From zero to 10 consecutive pull-ups — tracking the progress and what worked.",
+  },
+};
 
 export default function PullUpsPage() {
   return (

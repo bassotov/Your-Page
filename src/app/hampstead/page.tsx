@@ -33,10 +33,10 @@ export default function HampsteadPage() {
               Back
             </Link>
             <h1 className="text-lg sm:text-2xl font-bold tracking-tight">
-              Welcome to Hampstead!
+              Hampstead Gems
             </h1>
             <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">
-              Dima & Nuriya – hope you enjoy our local area. Here&apos;s a quick start guide of the places we visit every week.
+              Sharing our favourite stores. You can buy cheese or meat at 10+ places, but there&apos;s the best one. We got you covered.
             </p>
           </div>
         </div>
