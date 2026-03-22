@@ -6,14 +6,19 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "2025 Wrapped",
   description: "My 2025 in review — GitHub contributions, Spotify, WHOOP, Twitter, LinkedIn highlights.",
+  alternates: {
+    canonical: "https://barbash.in/wrapped",
+  },
   openGraph: {
     title: "2025 Wrapped | Pasha Barbashin",
     description: "My 2025 in review — GitHub contributions, Spotify, WHOOP, Twitter, LinkedIn highlights.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Pasha Barbashin" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "2025 Wrapped | Pasha Barbashin",
     description: "My 2025 in review — GitHub contributions, Spotify, WHOOP, Twitter, LinkedIn highlights.",
+    images: ["/og-image.png"],
   },
 };
 import {

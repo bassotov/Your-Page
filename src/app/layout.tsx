@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   description: "Ex-consultant turned indie hacker. Building products with a soul, agentising operations in BCG X.",
   authors: [{ name: "Pasha Barbashin" }],
   creator: "Pasha Barbashin",
+  alternates: {
+    canonical: "https://barbash.in",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -40,6 +43,23 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Pasha Barbashin",
+  url: "https://barbash.in",
+  jobTitle: "Indie Hacker",
+  worksFor: { "@type": "Organization", name: "BCG X" },
+  sameAs: [
+    "https://www.linkedin.com/in/bassotov/",
+    "https://x.com/pasha_barbashin",
+    "https://www.youtube.com/@pashalika",
+    "https://t.me/bassotov_blog",
+    "https://github.com/bassotov",
+    "https://open.spotify.com/artist/1mkiGsuSOF25ft6cRMEktM",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,6 +68,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

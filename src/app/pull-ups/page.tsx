@@ -6,14 +6,19 @@ import { ArrowLeft } from "lucide-react";
 export const metadata: Metadata = {
   title: "My First 10 Pull-Ups",
   description: "From zero to 10 consecutive pull-ups — tracking the progress and what worked.",
+  alternates: {
+    canonical: "https://barbash.in/pull-ups",
+  },
   openGraph: {
     title: "My First 10 Pull-Ups | Pasha Barbashin",
     description: "From zero to 10 consecutive pull-ups — tracking the progress and what worked.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Pasha Barbashin" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "My First 10 Pull-Ups | Pasha Barbashin",
     description: "From zero to 10 consecutive pull-ups — tracking the progress and what worked.",
+    images: ["/og-image.png"],
   },
 };
 
