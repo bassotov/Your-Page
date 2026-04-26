@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
@@ -74,12 +75,14 @@ export default function RootLayout({
         />
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}
         </ThemeProvider>
+        <Script src="https://subscribe-forms.beehiiv.com/embed.js" strategy="lazyOnload" />
+        <Script src="https://subscribe-forms.beehiiv.com/attribution.js" strategy="lazyOnload" />
         <Analytics/>
       </body>
     </html>
