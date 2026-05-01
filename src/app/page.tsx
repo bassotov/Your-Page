@@ -51,6 +51,14 @@ const projects: Project[] = [
     iconBg: "bg-orange-50",
   },
   {
+    name: "Meet Transcript",
+    href: "https://meet-transcript.com",
+    description: "Transcribe meetings on your device",
+    users: 5,
+    iconUrl: "https://www.google.com/s2/favicons?domain=meet-transcript.com&sz=128",
+    iconBg: "bg-sky-50",
+  },
+  {
     name: "X-Wizard",
     href: "https://www.linkedin.com/feed/update/urn:li:activity:7404105038173741056/",
     description: "BCG X internal tool",
