@@ -38,7 +38,7 @@ const projects: Project[] = [
     name: "Twitter Screenshot",
     href: "https://twitter-screenshot.com",
     description: "Beautiful tweet screenshots — Chrome extension",
-    users: 250,
+    users: 350,
     iconUrl: "https://www.google.com/s2/favicons?domain=twitter-screenshot.com&sz=128",
     iconBg: "bg-[#ff6900]/10",
   },
@@ -54,7 +54,7 @@ const projects: Project[] = [
     name: "Meet Transcript",
     href: "https://meet-transcript.com",
     description: "Transcribe meetings on your device",
-    users: 5,
+    users: 45,
     iconUrl: "https://www.google.com/s2/favicons?domain=meet-transcript.com&sz=128",
     iconBg: "bg-sky-50",
   },
@@ -142,7 +142,7 @@ export default function Home() {
             {/* Newsletter CTA */}
             <div className="flex flex-col gap-3">
               <p className="font-bold text-lg">
-                10 AI enthusiasts read{" "}
+                40 AI enthusiasts read{" "}
                 <Link
                   href="https://pasha.beehiiv.com/"
                   target="_blank"
