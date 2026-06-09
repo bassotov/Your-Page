@@ -1,64 +1,32 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Important Skills
-
-Always use these skills when working on React/Next.js code or UI:
-
-- **`vercel-react-best-practices`** - React and Next.js performance optimization guidelines from Vercel Engineering. Use when writing, reviewing, or refactoring React/Next.js code.
-- **`web-design-guidelines`** - Review UI code for Web Interface Guidelines compliance. Use when building, reviewing, or auditing UI components.
-- **`remotion-best-practices`** - Best practices for Remotion video creation in React. Use when working on programmatic video generation.
+Personal portfolio / link hub at **barbash.in** (Next.js App Router + shadcn/ui). Deploys on **Vercel** — pushing `main` ships to prod; don't run deploy commands manually.
 
 ## Commands
 
 ```bash
-npm run dev      # Start development server at localhost:3000
-npm run build    # Production build
-npm run lint     # ESLint
+npm run dev      # dev server at localhost:3000
+npm run build    # production build — also the typecheck gate (no separate tsc script)
+npm run lint     # eslint (next core-web-vitals + ts)
 ```
 
-## Architecture
+No test script — do not fabricate one. Type errors surface only via `npm run build`.
 
-Personal portfolio page for Pasha Barbashin built with Next.js 16 (App Router), React 19, Tailwind CSS 4, and shadcn/ui.
+## Conventions
 
-### Project Structure
+- Import alias `@/*` → `./src/*`.
+- Most components are `"use client"` + `forwardRef` — match the existing file you're next to when adding one.
+- shadcn: `new-york` style, lucide icons. Add components with `npx shadcn@latest add <component>`.
+- Theming: next-themes with OKLCH color variables in `src/app/globals.css` (light/dark + system).
 
-- `src/app/` - Next.js App Router pages and layouts
-- `src/app/page.tsx` - Main portfolio page with sections layout
-- `src/app/globals.css` - Theme variables (OKLCH colors for light/dark mode)
-- `src/components/embeds/` - Social media embed components (Spotify, GitHub)
-- `src/components/ui/` - shadcn/ui base components
-- `src/lib/utils.ts` - Utility functions including `cn()` for class merging
-- `public/` - Static images (profile pic, project screenshots, wrapped cards)
+## Navigation
 
-### Page Sections
+- Routes live in `src/app/`: `/` (`page.tsx`), `/hampstead`, `/pull-ups`, `/wrapped`, plus `robots.ts` / `sitemap.ts`.
+- `/hampstead` is driven by **maplibre-gl** (`components/ui/map.tsx`, data in `lib/hampstead-places.ts`); `/pull-ups` by **recharts** (`components/pull-up-infographic.tsx`).
+- Components grouped under `components/` (`embeds/`, `bento/`, `ui/`). `cn()` is in `lib/utils.ts`.
+- Full map: **see `docs/architecture.md`**. Read `page.tsx` directly for the home-page section layout — don't trust a copied tour.
 
-The main page (`page.tsx`) is organized into:
-1. **Header** - Profile picture, name, location, job title, email
-2. **2025 Wrapped** - GitHub contributions banner + grid of platform wrapped cards (WHOOP, Spotify, Twitter, LinkedIn)
-3. **Projects** - Image cards with overlay for Twitter Screenshot, Soka, X-Wizard
-4. **Footer** - Social icons (LinkedIn, Twitter, YouTube, Telegram, GitHub, Spotify)
+## Gotchas
 
-### Key Patterns
-
-**Image Cards with Overlay**:
-```tsx
-<div className="relative aspect-[4/5] overflow-hidden rounded-xl">
-  <Image src="..." fill className="object-cover" />
-  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-  <div className="absolute bottom-4 left-4 text-white">Title</div>
-</div>
-```
-
-**Component Conventions**:
-- All components use `forwardRef` pattern
-- Client components marked with `"use client"`
-- Import path alias: `@/*` maps to `./src/*`
-
-**Theming**: Uses next-themes with OKLCH color variables in globals.css. Light/dark mode with system detection. Primary color is Twitter blue.
-
-**shadcn/ui**: Configured with new-york style, Lucide icons. Add components via:
-```bash
-npx shadcn@latest add <component>
-```
+- The ~dozen `*.png` files at repo root (`desktop-after-2.png`, `mobile-fixed.png`, …) are **scratch screenshots, untracked and NOT gitignored** — never `git add` them and don't delete real assets. Tracked images live in `public/`.
+- `.playwright-mcp/` holds the screenshot-workflow output (gitignored).
