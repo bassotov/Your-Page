@@ -27,10 +27,18 @@ type Project = {
 
 const projects: Project[] = [
   {
+    name: "Brim",
+    href: "https://brimwater.app",
+    description: "Honest hydration tracker for iOS",
+    users: 100,
+    iconUrl: "https://www.google.com/s2/favicons?domain=brimwater.app&sz=128",
+    iconBg: "bg-cyan-50",
+  },
+  {
     name: "Sōka",
     href: "https://soka.health",
     description: "Health platform",
-    users: 15,
+    users: 105,
     iconUrl: "https://www.google.com/s2/favicons?domain=soka.health&sz=128",
     iconBg: "bg-emerald-50",
   },
@@ -38,7 +46,7 @@ const projects: Project[] = [
     name: "Twitter Screenshot",
     href: "https://twitter-screenshot.com",
     description: "Beautiful tweet screenshots — Chrome extension",
-    users: 350,
+    users: 500,
     iconUrl: "https://www.google.com/s2/favicons?domain=twitter-screenshot.com&sz=128",
     iconBg: "bg-[#ff6900]/10",
   },
@@ -54,7 +62,7 @@ const projects: Project[] = [
     name: "Meet Transcript",
     href: "https://meet-transcript.com",
     description: "Transcribe meetings on your device",
-    users: 45,
+    users: 400,
     iconUrl: "https://www.google.com/s2/favicons?domain=meet-transcript.com&sz=128",
     iconBg: "bg-sky-50",
   },
@@ -75,10 +83,6 @@ const socials = [
   { href: "https://t.me/bassotov_blog", label: "Telegram", icon: Send },
   { href: "https://github.com/bassotov", label: "GitHub", icon: Github },
   { href: "https://open.spotify.com/artist/1mkiGsuSOF25ft6cRMEktM", label: "Spotify", icon: Music },
-];
-
-const otherPages = [
-  { href: "/wrapped", label: "2025 Wrapped" },
 ];
 
 export default function Home() {
@@ -136,13 +140,13 @@ export default function Home() {
 
             {/* Short bio (code-style block quote) */}
             <div className="font-mono text-base text-muted-foreground border-l-2 border-muted-foreground/30 pl-4">
-              <p className="text-foreground/80">{"// Ex-consultant turned indie hacker"}</p>
+              <p className="text-foreground/80">{"// Ex-consultant building health & productivity apps"}</p>
             </div>
 
             {/* Newsletter CTA */}
             <div className="flex flex-col gap-3">
               <p className="font-bold text-lg">
-                40 AI enthusiasts read{" "}
+                47 legends read{" "}
                 <Link
                   href="https://pasha.beehiiv.com/"
                   target="_blank"
@@ -152,7 +156,7 @@ export default function Home() {
                 </Link>
               </p>
               <p className="text-muted-foreground">
-                I share how to apply AI in your work and projects. Every Tuesday in your inbox{" "}
+                Sharing the journey of building vibe businesses in public{" "}
                 <span aria-hidden>👇</span>
               </p>
               <NewsletterSubscribe />
@@ -203,66 +207,6 @@ export default function Home() {
           </section>
         </div>
       </main>
-
-      {/* Footer (Soka-style) */}
-      <footer className="border-t border-border/60 px-4 pt-14 pb-32 bg-background/60 safe-bottom">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
-            {/* Brand */}
-            <div>
-              <Link href="/" className="text-lg font-semibold tracking-tight">
-                Pasha Barbashin
-              </Link>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Happy to connect
-              </p>
-              <p className="mt-2 text-sm">
-                <Link
-                  href="mailto:pasha@barbash.in"
-                  className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  pasha@barbash.in
-                </Link>
-              </p>
-            </div>
-
-            {/* Pages */}
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-foreground/70">
-                Pages
-              </div>
-              <nav className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">
-                {otherPages.map(({ href, label }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="transition-colors hover:text-foreground"
-                  >
-                    {label}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            {/* Connect */}
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-foreground/70">
-                Connect
-              </div>
-              <nav className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">
-                <Link
-                  href="https://pasha.beehiiv.com/"
-                  target="_blank"
-                  className="transition-colors hover:text-foreground"
-                >
-                  Above Average
-                </Link>
-              </nav>
-            </div>
-          </div>
-
-        </div>
-      </footer>
     </div>
   );
 }
