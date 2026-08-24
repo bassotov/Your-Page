@@ -29,7 +29,7 @@ const projects: Project[] = [
   {
     name: "Brim",
     href: "https://brimwater.app",
-    description: "Honest hydration tracker for iOS",
+    description: "Reminds people to drink water",
     users: 100,
     iconUrl: "https://www.google.com/s2/favicons?domain=brimwater.app&sz=128",
     iconBg: "bg-cyan-50",
@@ -37,7 +37,7 @@ const projects: Project[] = [
   {
     name: "Sōka",
     href: "https://soka.health",
-    description: "Health platform",
+    description: "Organizes medical tests to see health trends",
     users: 105,
     iconUrl: "https://www.google.com/s2/favicons?domain=soka.health&sz=128",
     iconBg: "bg-emerald-50",
@@ -45,7 +45,7 @@ const projects: Project[] = [
   {
     name: "Twitter Screenshot",
     href: "https://twitter-screenshot.com",
-    description: "Beautiful tweet screenshots — Chrome extension",
+    description: "Turns tweets into beautiful images",
     users: 500,
     iconUrl: "https://www.google.com/s2/favicons?domain=twitter-screenshot.com&sz=128",
     iconBg: "bg-[#ff6900]/10",
@@ -53,7 +53,7 @@ const projects: Project[] = [
   {
     name: "Workout Timer",
     href: "https://workout-timer.app",
-    description: "Level up your AI workouts",
+    description: "Teaches your AI chat making interactive workouts",
     users: 6,
     iconUrl: "https://www.google.com/s2/favicons?domain=workout-timer.app&sz=128",
     iconBg: "bg-orange-50",
@@ -61,7 +61,7 @@ const projects: Project[] = [
   {
     name: "Meet Transcript",
     href: "https://meet-transcript.com",
-    description: "Transcribe meetings on your device",
+    description: "Transcribes private 1:1 meetings on-device",
     users: 400,
     iconUrl: "https://www.google.com/s2/favicons?domain=meet-transcript.com&sz=128",
     iconBg: "bg-sky-50",
@@ -69,7 +69,7 @@ const projects: Project[] = [
   {
     name: "X-Wizard",
     href: "https://www.linkedin.com/feed/update/urn:li:activity:7404105038173741056/",
-    description: "BCG X internal tool",
+    description: "Does the tedious ops for you: gathers data, finds insights, drafts docs, triages inbox",
     users: 10,
     iconBg: "bg-violet-50",
     iconNode: <Sparkles className="h-5 w-5 text-violet-500" />,
